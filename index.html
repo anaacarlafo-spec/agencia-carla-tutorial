@@ -17,22 +17,12 @@
       line-height: 1.6;
     }
 
-    /* ===== HEADER COM IMAGEM REAL ===== */
-    .site-header {
-      width: 100%;
-      display: block;
-      position: relative;
-    }
+    .site-header { width: 100%; display: block; position: relative; }
     .site-header img.banner-img {
-      width: 100%;
-      height: auto;
-      display: block;
-      max-height: 420px;
-      object-fit: cover;
-      object-position: center top;
+      width: 100%; height: auto; display: block;
+      max-height: 420px; object-fit: cover; object-position: center top;
     }
 
-    /* ===== AVISO BANNERS ===== */
     .intro-atencao {
       background: #2a1d08;
       border-left: 4px solid #f59e0b;
@@ -45,7 +35,6 @@
       font-weight: 700;
     }
 
-    /* ===== STEPS ===== */
     .steps-container {
       max-width: 700px;
       margin: 1.4rem auto 3rem;
@@ -217,11 +206,11 @@
 
   <main class="steps-container" id="main-content">
 
-    <!-- PASSO 1 -->
+    <!-- PASSO 1 — ANDROID -->
     <article class="step-card" id="step-1">
       <button class="step-header" aria-expanded="false" aria-controls="content-1">
         <span class="step-number">01</span>
-        <span class="step-title">Onde baixar o aplicativo</span>
+        <span class="step-title">Instalando no Android — Cuidado com o aviso!</span>
         <span class="step-arrow" aria-hidden="true">▼</span>
       </button>
       <div class="step-content" id="content-1">
@@ -230,28 +219,8 @@
           <div class="alert alert-pink">
             🌐 <strong>Site oficial:</strong> <a href="https://www.yaarlive.com" target="_blank" rel="noopener noreferrer" style="color:#f9a8d4;">www.yaarlive.com</a>
           </div>
-          <p>Depois de entrar no site, <strong>escolha o modelo do seu celular</strong> e clique no botão correto:</p>
-          <ul>
-            <li>📱 Se for <strong>Android</strong> — clique no botão com o robozinho 🤖</li>
-            <li>🍎 Se for <strong>iPhone</strong> — clique no botão que diz "iPhone"</li>
-          </ul>
-          <div class="alert alert-success">
-            ✅ O download vai começar automaticamente depois de clicar.
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- PASSO 2 -->
-    <article class="step-card" id="step-2">
-      <button class="step-header" aria-expanded="false" aria-controls="content-2">
-        <span class="step-number">02</span>
-        <span class="step-title">Instalando no Android — Cuidado com o aviso!</span>
-        <span class="step-arrow" aria-hidden="true">▼</span>
-      </button>
-      <div class="step-content" id="content-2">
-        <div class="step-body">
-          <p>Depois de baixar, na hora de instalar o celular vai mostrar um <strong>aviso do Google Play Protect</strong>. Não se assuste! É normal. Mas você precisa fazer do jeito certo:</p>
+          <p>Depois de entrar no site, escolha <strong>Android</strong> e clique no botão com o robozinho 🤖. O download vai começar automaticamente.</p>
+          <p>Na hora de instalar, o celular vai mostrar um <strong>aviso do Google Play Protect</strong>. Não se assuste! É normal. Mas você precisa fazer do jeito certo:</p>
           <div class="alert alert-error">
             🚫 <strong>NÃO clique em "Entendi" ou "OK"</strong> — isso cancela a instalação e vai dar errado!
           </div>
@@ -273,16 +242,20 @@
       </div>
     </article>
 
-    <!-- PASSO 3 -->
-    <article class="step-card" id="step-3">
-      <button class="step-header" aria-expanded="false" aria-controls="content-3">
-        <span class="step-number">03</span>
+    <!-- PASSO 2 — IPHONE -->
+    <article class="step-card" id="step-2">
+      <button class="step-header" aria-expanded="false" aria-controls="content-2">
+        <span class="step-number">02</span>
         <span class="step-title">Instalando no iPhone — Passo a Passo</span>
         <span class="step-arrow" aria-hidden="true">▼</span>
       </button>
-      <div class="step-content" id="content-3">
+      <div class="step-content" id="content-2">
         <div class="step-body">
-          <p>No iPhone o processo é um pouquinho diferente. Depois de baixar, siga esses passos nas configurações:</p>
+          <p>Para baixar o app, você precisa entrar no site oficial:</p>
+          <div class="alert alert-pink">
+            🌐 <strong>Site oficial:</strong> <a href="https://www.yaarlive.com" target="_blank" rel="noopener noreferrer" style="color:#f9a8d4;">www.yaarlive.com</a>
+          </div>
+          <p>Depois de entrar no site, escolha <strong>iPhone</strong> e clique no botão correspondente 🍎. Depois de baixar, siga esses passos nas configurações:</p>
           <ul>
             <li>1️⃣ Vá em <strong>Ajustes</strong> do celular</li>
             <li>2️⃣ Clique em <strong>Geral</strong></li>
@@ -302,14 +275,14 @@
       </div>
     </article>
 
-    <!-- PASSO 4 -->
-    <article class="step-card" id="step-4">
-      <button class="step-header" aria-expanded="false" aria-controls="content-4">
-        <span class="step-number">04</span>
+    <!-- PASSO 3 — FOTO -->
+    <article class="step-card" id="step-3">
+      <button class="step-header" aria-expanded="false" aria-controls="content-3">
+        <span class="step-number">03</span>
         <span class="step-title">Colocando sua foto no perfil</span>
         <span class="step-arrow" aria-hidden="true">▼</span>
       </button>
-      <div class="step-content" id="content-4">
+      <div class="step-content" id="content-3">
         <div class="step-body">
           <p>Depois de criar sua conta no app, você precisa <strong>colocar uma foto no seu perfil</strong>.</p>
           <div class="step-images">
@@ -332,14 +305,14 @@
       </div>
     </article>
 
-    <!-- PASSO 5 -->
-    <article class="step-card" id="step-5">
-      <button class="step-header" aria-expanded="false" aria-controls="content-5">
-        <span class="step-number">05</span>
+    <!-- PASSO 4 — ID -->
+    <article class="step-card" id="step-4">
+      <button class="step-header" aria-expanded="false" aria-controls="content-4">
+        <span class="step-number">04</span>
         <span class="step-title">Encontrando e enviando o seu número de ID</span>
         <span class="step-arrow" aria-hidden="true">▼</span>
       </button>
-      <div class="step-content" id="content-5">
+      <div class="step-content" id="content-4">
         <div class="step-body">
           <p>Agora você precisa encontrar o seu <strong>número de ID</strong> no app e enviar para a Carla. É esse número que vai ativar sua conta na agência.</p>
           <img src="./assets/img/perfil-id.jpg" alt="Tela de perfil mostrando o número de ID abaixo do avatar" class="img-single" loading="lazy" />
@@ -356,14 +329,14 @@
       </div>
     </article>
 
-    <!-- PASSO 6 -->
-    <article class="step-card" id="step-6">
-      <button class="step-header" aria-expanded="false" aria-controls="content-6">
-        <span class="step-number">06</span>
+    <!-- PASSO 5 — ATIVAÇÃO -->
+    <article class="step-card" id="step-5">
+      <button class="step-header" aria-expanded="false" aria-controls="content-5">
+        <span class="step-number">05</span>
         <span class="step-title">Ativação do perfil e início dos ganhos</span>
         <span class="step-arrow" aria-hidden="true">▼</span>
       </button>
-      <div class="step-content" id="content-6">
+      <div class="step-content" id="content-5">
         <div class="step-body">
           <p>Depois que você enviar o número de ID, a <strong>Carla vai ativar seu perfil no sistema</strong>. A partir daí você começa a receber chamadas e ganhar dinheiro! 🎉</p>
           <div class="alert alert-success">
