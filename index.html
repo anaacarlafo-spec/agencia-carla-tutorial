@@ -6,32 +6,246 @@
   <title>Agência Carla – Tutorial</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link href="https://api.fontshare.com/v2/css?f[]=nunito@400,500,600,700,800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: none; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: #18111a;
+      color: #f0e6f6;
+      min-height: 100dvh;
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      background: linear-gradient(160deg, #e91e8c 0%, #ff6ec7 55%, #f472b6 100%);
+      padding: 2.5rem 1.2rem 2.8rem;
+      text-align: center;
+      position: relative;
+    }
+    .header-flower { font-size: 2rem; margin-bottom: .6rem; display: block; }
+    .site-title {
+      font-size: clamp(2rem, 7vw, 3rem);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -.01em;
+      line-height: 1.1;
+    }
+    .site-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.22);
+      border: 1.5px solid rgba(255,255,255,0.45);
+      color: #fff;
+      font-size: .95rem;
+      font-weight: 700;
+      border-radius: 2rem;
+      padding: .35rem 1.1rem;
+      margin-top: .7rem;
+    }
+    .site-desc {
+      color: rgba(255,255,255,0.92);
+      font-size: .97rem;
+      margin-top: .9rem;
+      max-width: 380px;
+      margin-inline: auto;
+      line-height: 1.55;
+    }
+
+    /* ── INTRO BANNER ── */
+    .intro-banner {
+      background: #2a1a2e;
+      border-left: 4px solid #e91e8c;
+      border-radius: .7rem;
+      padding: 1rem 1.2rem;
+      margin: 1.4rem 1rem 0;
+      font-size: .97rem;
+      color: #e8d5f5;
+      line-height: 1.6;
+    }
+
+    /* ── MAIN ── */
+    .steps-container {
+      max-width: 700px;
+      margin: 1.4rem auto 3rem;
+      padding: 0 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+
+    /* ── ACCORDION CARD ── */
+    .step-card {
+      background: #221529;
+      border-radius: 1rem;
+      overflow: hidden;
+      border: 1.5px solid #3a2045;
+    }
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.1rem 1.2rem;
+      cursor: pointer;
+      text-align: left;
+      color: #f0e6f6;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      transition: background .18s;
+    }
+    .step-header:hover { background: rgba(233,30,140,0.08); }
+    .step-header[aria-expanded="true"] { background: rgba(233,30,140,0.1); }
+    .step-number {
+      background: #e91e8c;
+      color: #fff;
+      font-size: .82rem;
+      font-weight: 800;
+      border-radius: .5rem;
+      min-width: 2.1rem;
+      height: 2.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-title { flex: 1; }
+    .step-arrow {
+      color: #e91e8c;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      transition: transform .25s cubic-bezier(.16,1,.3,1);
+    }
+    .step-header[aria-expanded="true"] .step-arrow { transform: rotate(180deg); }
+
+    .step-content { display: none; }
+    .step-content.open { display: block; }
+    .step-body {
+      padding: 0 1.2rem 1.4rem;
+      border-top: 1.5px solid #3a2045;
+      padding-top: 1rem;
+      font-size: .95rem;
+      color: #d8c8ea;
+      line-height: 1.75;
+    }
+    .step-body p { margin-bottom: .7rem; }
+    .step-body ul {
+      padding-left: 1.4rem;
+      margin-bottom: .8rem;
+    }
+    .step-body ul li { margin-bottom: .35rem; }
+    .step-body strong { color: #f0e6f6; }
+
+    /* ── ALERTS ── */
+    .alert {
+      border-radius: .6rem;
+      padding: .75rem 1rem;
+      margin: .7rem 0;
+      font-size: .92rem;
+      line-height: 1.55;
+    }
+    .alert-warning { background: #2a1d08; border-left: 4px solid #f59e0b; color: #fde68a; }
+    .alert-error   { background: #2a0d12; border-left: 4px solid #ef4444; color: #fecaca; }
+    .alert-success { background: #0a2015; border-left: 4px solid #22c55e; color: #bbf7d0; }
+    .alert-info    { background: #0d1a2a; border-left: 4px solid #60a5fa; color: #bfdbfe; }
+    .alert-pink    { background: #2a0d1e; border-left: 4px solid #e91e8c; color: #f9a8d4; }
+
+    /* ── IMAGES ── */
+    .step-images {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 1rem 0;
+    }
+    .img-block {
+      flex: 1;
+      min-width: 140px;
+      max-width: 240px;
+      text-align: center;
+    }
+    .img-block img, .img-single {
+      width: 100%;
+      border-radius: .75rem;
+      border: 2px solid #3a2045;
+      display: block;
+      margin: 0 auto;
+      max-width: 280px;
+    }
+    .img-single { margin: 1rem auto; }
+    .img-caption {
+      font-size: .82rem;
+      color: #c4a8d8;
+      margin-top: .4rem;
+      line-height: 1.4;
+    }
+
+    /* ── CTA BUTTONS ── */
+    .cta-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .7rem;
+      margin-top: 1rem;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: #e91e8c;
+      color: #fff;
+      font-family: inherit;
+      font-size: .93rem;
+      font-weight: 700;
+      padding: .65rem 1.2rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background .18s, transform .12s;
+    }
+    .cta-btn:hover { background: #c4166e; transform: translateY(-1px); }
+    .cta-btn.secondary {
+      background: transparent;
+      border: 2px solid #e91e8c;
+      color: #f472b6;
+    }
+    .cta-btn.secondary:hover { background: rgba(233,30,140,0.12); }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      text-align: center;
+      padding: 1.5rem 1rem 2.5rem;
+      font-size: .85rem;
+      color: #7a5c8a;
+      border-top: 1px solid #2a1a2e;
+    }
+    .site-footer strong { color: #c084fc; }
+    .footer-small { margin-top: .3rem; color: #5a4068; }
+
+    @media (max-width: 480px) {
+      .site-header { padding: 2rem 1rem 2.2rem; }
+      .steps-container { padding: 0 .75rem; }
+      .step-header { padding: .95rem 1rem; font-size: .95rem; }
+      .step-body { padding: 0 1rem 1.2rem; padding-top: .85rem; }
+    }
+  </style>
 </head>
 <body>
 
   <!-- HEADER -->
   <header class="site-header">
-    <div class="header-inner">
-      <div class="logo-area">
-        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Agência Carla">
-          <circle cx="20" cy="20" r="20" fill="#f472b6"/>
-          <path d="M12 26 C12 18 28 18 28 26" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-          <circle cx="20" cy="15" r="5" fill="white"/>
-          <path d="M20 20 L20 30" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          <path d="M15 24 L25 24" stroke="white" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <div>
-          <h1 class="site-title">Carla<span>.appgringo</span></h1>
-          <p class="site-sub">Material de ajuda oficial</p>
-        </div>
-      </div>
-    </div>
+    <span class="header-flower">🌸</span>
+    <h1 class="site-title">Agência Carla</h1>
+    <span class="site-badge">Material de Ajuda Oficial para Criadoras</span>
+    <p class="site-desc">Siga cada passo com calma. Tudo está aqui, na ordem certa, para você não ter dúvidas. 💕</p>
   </header>
 
   <!-- INTRO -->
   <div class="intro-banner">
-    <p>📖 Siga cada etapa <strong>na ordem correta</strong>. Clique no título para abrir e ler cada passo.</p>
+    👋 Bem-vinda! Este é o material oficial da Agência Carla. Aqui você encontra tudo que precisa para começar a trabalhar corretamente. Abra cada tópico clicando no título ou na setinha. ✨
   </div>
 
   <!-- ACCORDION STEPS -->
@@ -40,29 +254,23 @@
     <!-- PASSO 1 -->
     <article class="step-card" id="step-1">
       <button class="step-header" aria-expanded="false" aria-controls="content-1">
-        <span class="step-number">1</span>
-        <span class="step-title">Baixar e instalar o app Yaar</span>
-        <span class="step-arrow" aria-hidden="true">▾</span>
+        <span class="step-number">01</span>
+        <span class="step-title">Onde baixar o aplicativo</span>
+        <span class="step-arrow" aria-hidden="true">▼</span>
       </button>
-      <div class="step-content" id="content-1" hidden>
+      <div class="step-content" id="content-1">
         <div class="step-body">
-          <p>O app Yaar não está disponível na Play Store. Você precisa baixar o arquivo <strong>.apk</strong> diretamente pelo link da agência.</p>
-          <div class="alert alert-warning">
-            ⚠️ <strong>Atenção:</strong> Ao instalar, seu celular pode mostrar um aviso do Google Play Protect. Veja como resolver abaixo.
+          <p>Para baixar o app, você precisa entrar no site oficial:</p>
+          <div class="alert alert-pink">
+            🌐 <strong>Site oficial:</strong> <a href="https://www.yaarlive.com" target="_blank" rel="noopener noreferrer" style="color:#f9a8d4;">www.yaarlive.com</a>
           </div>
-          <p>Quando aparecer o aviso <strong>"App de risco bloqueado"</strong>, siga estes passos:</p>
-          <div class="step-images">
-            <div class="img-block">
-              <img src="./assets/img/aviso-1.jpg" alt="Aviso do Google Play Protect – clicar em Mais detalhes" loading="lazy" width="320" height="400" />
-              <p class="img-caption">✅ Clique em <strong>"Mais detalhes"</strong> — NÃO clique em "Entendi"</p>
-            </div>
-            <div class="img-block">
-              <img src="./assets/img/aviso-2.jpg" alt="Segunda tela – clicar em Instalar assim mesmo" loading="lazy" width="320" height="400" />
-              <p class="img-caption">✅ Depois clique em <strong>"Instalar assim mesmo"</strong></p>
-            </div>
-          </div>
-          <div class="alert alert-error">
-            🚫 <strong>ERRADO:</strong> Nunca clique em <strong>"Entendi"</strong> — isso cancela a instalação.
+          <p>Depois de entrar no site, <strong>escolha o modelo do seu celular</strong> e clique no botão correto:</p>
+          <ul>
+            <li>📱 Se for <strong>Android</strong> — clique no botão com o robozinho 🤖</li>
+            <li>🍎 Se for <strong>iPhone</strong> — clique no botão que diz "iPhone"</li>
+          </ul>
+          <div class="alert alert-success">
+            ✅ O download vai começar automaticamente depois de clicar.
           </div>
         </div>
       </div>
@@ -71,17 +279,30 @@
     <!-- PASSO 2 -->
     <article class="step-card" id="step-2">
       <button class="step-header" aria-expanded="false" aria-controls="content-2">
-        <span class="step-number">2</span>
-        <span class="step-title">Criar sua conta no Yaar</span>
-        <span class="step-arrow" aria-hidden="true">▾</span>
+        <span class="step-number">02</span>
+        <span class="step-title">Instalando no Android — Cuidado com o aviso!</span>
+        <span class="step-arrow" aria-hidden="true">▼</span>
       </button>
-      <div class="step-content" id="content-2" hidden>
+      <div class="step-content" id="content-2">
         <div class="step-body">
-          <p>Abra o app Yaar após instalar. Crie uma conta nova com seu número de telefone ou e-mail.</p>
-          <div class="alert alert-info">
-            💡 Use um número de telefone válido que você tenha acesso para confirmar o código de verificação.
+          <p>Depois de baixar, na hora de instalar o celular vai mostrar um <strong>aviso do Google Play Protect</strong>. Não se assuste! É normal. Mas você precisa fazer do jeito certo:</p>
+          <div class="alert alert-error">
+            🚫 <strong>NÃO clique em "Entendi" ou "OK"</strong> — isso cancela a instalação e vai dar errado!
           </div>
-          <p>Após criar a conta, você verá sua tela de perfil com seu <strong>avatar</strong> e seu <strong>número de ID</strong>.</p>
+          <p><strong>✅ O que fazer:</strong></p>
+          <div class="step-images">
+            <div class="img-block">
+              <img src="./assets/img/aviso-1.jpg" alt="Aviso Google Play Protect - clicar em Mais detalhes" loading="lazy" />
+              <p class="img-caption">1️⃣ Clique em <strong>"Mais detalhes"</strong> — NÃO em "Entendi"</p>
+            </div>
+            <div class="img-block">
+              <img src="./assets/img/aviso-2.jpg" alt="Segunda tela - clicar em Instalar assim mesmo" loading="lazy" />
+              <p class="img-caption">2️⃣ Clique em <strong>"Instalar assim mesmo"</strong></p>
+            </div>
+          </div>
+          <div class="alert alert-success">
+            ✅ Pronto! O app vai instalar normalmente depois disso.
+          </div>
         </div>
       </div>
     </article>
@@ -89,22 +310,27 @@
     <!-- PASSO 3 -->
     <article class="step-card" id="step-3">
       <button class="step-header" aria-expanded="false" aria-controls="content-3">
-        <span class="step-number">3</span>
-        <span class="step-title">Configurar seu perfil</span>
-        <span class="step-arrow" aria-hidden="true">▾</span>
+        <span class="step-number">03</span>
+        <span class="step-title">Instalando no iPhone — Passo a Passo</span>
+        <span class="step-arrow" aria-hidden="true">▼</span>
       </button>
-      <div class="step-content" id="content-3" hidden>
+      <div class="step-content" id="content-3">
         <div class="step-body">
-          <p>Após criar a conta, configure seu perfil para começar a trabalhar na agência.</p>
-          <p>Você precisará adicionar sua <strong>foto de perfil</strong>, colocar um <strong>apelido</strong> e completar as informações básicas.</p>
-          <div class="step-images">
-            <div class="img-block">
-              <img src="./assets/img/sua-foto.jpg" alt="Tela de editar informações com espaço para adicionar sua foto" loading="lazy" width="320" height="400" />
-              <p class="img-caption">📸 Adicione <strong>sua foto</strong> no espaço indicado</p>
-            </div>
+          <p>No iPhone o processo é um pouquinho diferente. Depois de baixar, siga esses passos nas configurações:</p>
+          <ul>
+            <li>1️⃣ Vá em <strong>Ajustes</strong> do celular</li>
+            <li>2️⃣ Clique em <strong>Geral</strong></li>
+            <li>3️⃣ Clique em <strong>Gestão de VPN e Gerenciamento de Dispositivo</strong></li>
+            <li>4️⃣ Clique no nome do app (<strong>XL…</strong>)</li>
+            <li>5️⃣ Clique em <strong>Confiar em "XL…"</strong></li>
+            <li>6️⃣ Clique em <strong>Permitir</strong></li>
+            <li>7️⃣ <strong>Reinicie o celular</strong></li>
+          </ul>
+          <div class="alert alert-success">
+            ✅ Depois de reiniciar, o app vai abrir normalmente!
           </div>
           <div class="alert alert-warning">
-            ⚠️ Use uma foto <strong>real e clara</strong> do seu rosto. Fotos de perfil bem feitas geram mais conexões no app.
+            ⚠️ Se tiver dificuldade, manda mensagem para a Carla que ela te ajuda.
           </div>
         </div>
       </div>
@@ -113,21 +339,20 @@
     <!-- PASSO 4 -->
     <article class="step-card" id="step-4">
       <button class="step-header" aria-expanded="false" aria-controls="content-4">
-        <span class="step-number">4</span>
-        <span class="step-title">Anotar seu ID do app</span>
-        <span class="step-arrow" aria-hidden="true">▾</span>
+        <span class="step-number">04</span>
+        <span class="step-title">Colocando sua foto no perfil</span>
+        <span class="step-arrow" aria-hidden="true">▼</span>
       </button>
-      <div class="step-content" id="content-4" hidden>
+      <div class="step-content" id="content-4">
         <div class="step-body">
-          <p>Depois de criar e configurar sua conta, você precisa <strong>anotar seu número de ID</strong>. Esse número é único e identifica seu perfil no app.</p>
-          <div class="step-images">
-            <div class="img-block">
-              <img src="./assets/img/perfil-id.jpg" alt="Tela de perfil mostrando avatar e número de ID abaixo do nome" loading="lazy" width="320" height="400" />
-              <p class="img-caption">📋 Seu <strong>ID aparece abaixo do seu nome</strong> na tela de perfil</p>
-            </div>
+          <p>Depois de criar sua conta no app, você precisa <strong>colocar uma foto no seu perfil</strong>.</p>
+          <img src="./assets/img/sua-foto.jpg" alt="Tela de editar perfil com espaço para adicionar sua foto" class="img-single" loading="lazy" />
+          <p class="img-caption" style="text-align:center; margin-bottom:.8rem;">📸 Adicione sua foto no espaço indicado</p>
+          <div class="alert alert-warning">
+            ⚠️ <strong>Atenção:</strong> Mesmo depois de colocar a foto, a tela pode continuar mostrando o avatar (bonequinho). Isso é normal! Não precisa se preocupar.
           </div>
-          <div class="alert alert-info">
-            💡 Você vai precisar enviar este ID para a Carla para vincular sua conta à agência.
+          <div class="alert alert-success">
+            ✅ O importante é ter feito o upload da foto. Pode seguir para o próximo passo!
           </div>
         </div>
       </div>
@@ -136,18 +361,22 @@
     <!-- PASSO 5 -->
     <article class="step-card" id="step-5">
       <button class="step-header" aria-expanded="false" aria-controls="content-5">
-        <span class="step-number">5</span>
-        <span class="step-title">Enviar seu ID para a agência</span>
-        <span class="step-arrow" aria-hidden="true">▾</span>
+        <span class="step-number">05</span>
+        <span class="step-title">Encontrando e enviando o seu número de ID</span>
+        <span class="step-arrow" aria-hidden="true">▼</span>
       </button>
-      <div class="step-content" id="content-5" hidden>
+      <div class="step-content" id="content-5">
         <div class="step-body">
-          <p>Com seu ID em mãos, entre em contato com a Carla e envie seu número de ID para que ela possa cadastrar você oficialmente na agência.</p>
-          <div class="alert alert-success">
-            ✅ Após o envio, aguarde a confirmação da Carla. Só depois disso você estará ativa na agência.
+          <p>Agora você precisa encontrar o seu <strong>número de ID</strong> no app e enviar para a Carla. É esse número que vai ativar sua conta na agência.</p>
+          <img src="./assets/img/perfil-id.jpg" alt="Tela de perfil mostrando o número de ID abaixo do avatar" class="img-single" loading="lazy" />
+          <p class="img-caption" style="text-align:center; margin-bottom:.8rem;">📋 O número de ID fica abaixo do avatar, na tela de perfil</p>
+          <p>Após encontrar o número, envie para a Carla por um desses canais:</p>
+          <div class="cta-links">
+            <a href="https://api.whatsapp.com/send?phone=5532991250940" target="_blank" rel="noopener noreferrer" class="cta-btn">💬 WhatsApp da Carla</a>
+            <a href="https://www.tiktok.com/@carla.appgringo" target="_blank" rel="noopener noreferrer" class="cta-btn secondary">🎵 TikTok da Carla</a>
           </div>
-          <div class="alert alert-warning">
-            ⚠️ Não pule esta etapa! Sem enviar o ID, sua conta não fica vinculada à agência.
+          <div class="alert alert-warning" style="margin-top:1rem;">
+            ⚠️ <strong>Não pule esta etapa!</strong> Sem enviar o ID, sua conta não é ativada e você não recebe chamadas.
           </div>
         </div>
       </div>
@@ -156,18 +385,29 @@
     <!-- PASSO 6 -->
     <article class="step-card" id="step-6">
       <button class="step-header" aria-expanded="false" aria-controls="content-6">
-        <span class="step-number">6</span>
-        <span class="step-title">Começar a usar o app corretamente</span>
-        <span class="step-arrow" aria-hidden="true">▾</span>
+        <span class="step-number">06</span>
+        <span class="step-title">Ativação do perfil e início dos ganhos</span>
+        <span class="step-arrow" aria-hidden="true">▼</span>
       </button>
-      <div class="step-content" id="content-6" hidden>
+      <div class="step-content" id="content-6">
         <div class="step-body">
-          <p>Após ser confirmada pela Carla, você já pode usar o app normalmente. Siga as orientações da agência para saber como interagir, quais horários usar e como aumentar seus resultados.</p>
-          <div class="alert alert-info">
-            💡 Dúvidas? Entre em contato direto com a Carla pelo grupo ou canal oficial da agência.
-          </div>
+          <p>Depois que você enviar o número de ID, a <strong>Carla vai ativar seu perfil no sistema</strong>. A partir daí você começa a receber chamadas e ganhar dinheiro! 🎉</p>
           <div class="alert alert-success">
-            🌸 Você concluiu todas as etapas do tutorial. Boa sorte!
+            ✅ <strong>Checklist final:</strong><br><br>
+            ☑️ Baixou o app pelo site oficial<br>
+            ☑️ Instalou corretamente (Android ou iPhone)<br>
+            ☑️ Criou sua conta no app<br>
+            ☑️ Colocou sua foto no perfil<br>
+            ☑️ Encontrou e enviou o número de ID para a Carla<br>
+            ☑️ Aguardou a confirmação da Carla
+          </div>
+          <div class="alert alert-pink">
+            🌸 Tudo certo? Então você está pronta para começar! Boa sorte e bem-vinda à agência! 💕
+          </div>
+          <p style="margin-top:.8rem;">Dúvidas? Fale com a Carla:</p>
+          <div class="cta-links">
+            <a href="https://api.whatsapp.com/send?phone=5532991250940" target="_blank" rel="noopener noreferrer" class="cta-btn">💬 WhatsApp da Carla</a>
+            <a href="https://www.tiktok.com/@carla.appgringo" target="_blank" rel="noopener noreferrer" class="cta-btn secondary">🎵 TikTok da Carla</a>
           </div>
         </div>
       </div>
@@ -181,6 +421,15 @@
     <p class="footer-small">Dúvidas? Fale com a Carla no grupo da agência 💬</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    document.querySelectorAll('.step-header').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        const content = document.getElementById(btn.getAttribute('aria-controls'));
+        btn.setAttribute('aria-expanded', String(!expanded));
+        content.classList.toggle('open', !expanded);
+      });
+    });
+  </script>
 </body>
 </html>
