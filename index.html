@@ -17,171 +17,19 @@
       line-height: 1.6;
     }
 
-    /* ===== HERO BANNER ===== */
+    /* ===== HEADER COM IMAGEM REAL ===== */
     .site-header {
+      width: 100%;
+      display: block;
       position: relative;
-      overflow: hidden;
-      background: linear-gradient(135deg, #3a0a6e 0%, #7b1fa2 30%, #e91e8c 65%, #ff6ec7 100%);
-      padding: 2.2rem 1.2rem 2rem;
-      text-align: center;
-      min-height: 260px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
     }
-
-    /* Glowing orbs background */
-    .site-header::before {
-      content: '';
-      position: absolute;
-      top: -60px; left: -60px;
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(255,110,199,0.35) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-    .site-header::after {
-      content: '';
-      position: absolute;
-      bottom: -80px; right: -40px;
-      width: 340px; height: 340px;
-      background: radial-gradient(circle, rgba(120,30,220,0.4) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    /* Sparkle dots */
-    .sparkles {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .sparkle {
-      position: absolute;
-      width: 6px; height: 6px;
-      background: #fff;
-      border-radius: 50%;
-      opacity: 0;
-      animation: twinkle 3s ease-in-out infinite;
-    }
-    .sparkle:nth-child(1)  { top: 12%; left: 8%;  animation-delay: 0s; }
-    .sparkle:nth-child(2)  { top: 25%; left: 18%; animation-delay: .4s; width:4px; height:4px; }
-    .sparkle:nth-child(3)  { top: 10%; left: 42%; animation-delay: .8s; }
-    .sparkle:nth-child(4)  { top: 18%; left: 68%; animation-delay: .2s; width:5px; height:5px; }
-    .sparkle:nth-child(5)  { top: 8%;  left: 85%; animation-delay: 1s; }
-    .sparkle:nth-child(6)  { top: 55%; left: 5%;  animation-delay: 1.4s; width:4px; height:4px; }
-    .sparkle:nth-child(7)  { top: 70%; left: 22%; animation-delay: .6s; }
-    .sparkle:nth-child(8)  { top: 75%; left: 60%; animation-delay: 1.8s; width:4px; height:4px; }
-    .sparkle:nth-child(9)  { top: 60%; left: 80%; animation-delay: .9s; }
-    .sparkle:nth-child(10) { top: 82%; left: 90%; animation-delay: 1.2s; width:5px; height:5px; }
-    @keyframes twinkle {
-      0%, 100% { opacity: 0; transform: scale(.5); }
-      50%       { opacity: 1; transform: scale(1.2); }
-    }
-
-    /* Dollar coins row */
-    .coins-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: .5rem;
-      margin-bottom: .6rem;
-      position: relative;
-      z-index: 2;
-    }
-    .coin {
-      font-size: 1.4rem;
-      animation: coin-bounce 1.8s ease-in-out infinite;
-    }
-    .coin:nth-child(2) { animation-delay: .3s; }
-    .coin:nth-child(3) { animation-delay: .6s; }
-    @keyframes coin-bounce {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-5px); }
-    }
-
-    .header-content { position: relative; z-index: 2; }
-
-    .banner-eyebrow {
-      font-size: clamp(.8rem, 2.5vw, .95rem);
-      font-weight: 700;
-      color: rgba(255,255,255,0.88);
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      margin-bottom: .5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: .4rem;
-    }
-
-    .site-title {
-      font-size: clamp(2.4rem, 9vw, 4rem);
-      font-weight: 900;
-      color: #fff;
-      line-height: 1.0;
-      letter-spacing: -.02em;
-      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
-      margin-bottom: .15rem;
-    }
-    .site-title .highlight {
-      color: #ffd700;
-      display: inline-block;
-      filter: drop-shadow(0 0 8px rgba(255,215,0,0.6));
-    }
-
-    .site-subtitle {
-      font-size: clamp(1rem, 3.5vw, 1.35rem);
-      font-weight: 800;
-      color: rgba(255,255,255,0.95);
-      text-shadow: 0 1px 8px rgba(0,0,0,0.25);
-      margin-bottom: 1rem;
-    }
-
-    .banner-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      justify-content: center;
-      margin-bottom: 1rem;
-    }
-    .banner-badge {
-      background: rgba(255,255,255,0.18);
-      border: 1.5px solid rgba(255,255,255,0.4);
-      color: #fff;
-      font-size: .82rem;
-      font-weight: 700;
-      border-radius: 2rem;
-      padding: .3rem .9rem;
-      backdrop-filter: blur(4px);
-      display: flex;
-      align-items: center;
-      gap: .3rem;
-    }
-
-    .banner-cta-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      background: linear-gradient(90deg, #ffd700, #ffaa00);
-      color: #3a0a0a;
-      font-family: inherit;
-      font-size: clamp(.9rem, 2.8vw, 1rem);
-      font-weight: 900;
-      padding: .7rem 1.6rem;
-      border-radius: 2rem;
-      text-decoration: none;
-      border: none;
-      box-shadow: 0 4px 24px rgba(255,170,0,0.45);
-      margin-top: .2rem;
-      letter-spacing: .01em;
-      animation: pulse-glow 2.5s ease-in-out infinite;
-    }
-    @keyframes pulse-glow {
-      0%, 100% { box-shadow: 0 4px 24px rgba(255,170,0,0.45); }
-      50%       { box-shadow: 0 4px 36px rgba(255,170,0,0.75); }
+    .site-header img.banner-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      max-height: 420px;
+      object-fit: cover;
+      object-position: center top;
     }
 
     /* ===== AVISO BANNERS ===== */
@@ -354,7 +202,7 @@
     .site-footer strong { color: #c084fc; }
     .footer-small { margin-top: .3rem; color: #5a4068; }
     @media (max-width: 480px) {
-      .site-header { padding: 1.8rem 1rem 1.8rem; min-height: 220px; }
+      .site-header img.banner-img { max-height: 260px; object-position: center center; }
       .steps-container { padding: 0 .75rem; }
       .step-header { padding: .95rem 1rem; font-size: .95rem; }
       .step-body { padding: 0 1rem 1.2rem; padding-top: .85rem; }
@@ -364,42 +212,13 @@
 <body>
 
   <header class="site-header">
-    <div class="sparkles" aria-hidden="true">
-      <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
-      <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
-      <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
-      <span class="sparkle"></span>
-    </div>
-
-    <div class="header-content">
-      <div class="coins-row" aria-hidden="true">
-        <span class="coin">💰</span>
-        <span class="coin">✨</span>
-        <span class="coin">💰</span>
-      </div>
-
-      <div class="banner-eyebrow">
-        🌸 Material Oficial da Agência
-      </div>
-
-      <h1 class="site-title">
-        Agência <span class="highlight">Carla</span>
-      </h1>
-
-      <p class="site-subtitle">
-        Ganhe Dinheiro Atendendo Chamadas de Vídeo! 📹
-      </p>
-
-      <div class="banner-badges">
-        <span class="banner-badge">⏱️ Quanto mais tempo na chamada, mais você ganha</span>
-        <span class="banner-badge">💵 +$$$ Por Minuto</span>
-        <span class="banner-badge">📲 100% pelo celular</span>
-      </div>
-
-      <p style="color:rgba(255,255,255,0.85); font-size:.92rem; font-weight:600; max-width:340px; margin:0 auto .9rem;">
-        Siga cada passo com calma. Tudo está aqui, na ordem certa, para você não ter dúvidas. 💕
-      </p>
-    </div>
+    <img
+      class="banner-img"
+      src="./assets/img/banner-topo.jpg"
+      alt="Agência Carla – Ganhe Dinheiro Atendendo Chamadas de Vídeo"
+      width="1310"
+      height="655"
+    />
   </header>
 
   <div class="intro-banner">
